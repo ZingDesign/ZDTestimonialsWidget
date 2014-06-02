@@ -1,0 +1,20 @@
+.zd-image-preview {
+  margin: 10px 0;
+}
+
+.ledatw-input-group {
+  label {
+    display: block;
+    font-weight: 700;
+  }
+
+  input, textarea {
+    display:block;
+    width: 100%;
+  }
+
+  textarea {
+    height: 120px;
+    resize: vertical;
+  }
+}

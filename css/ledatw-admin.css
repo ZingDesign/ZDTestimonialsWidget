@@ -1,0 +1,12 @@
+.zd-image-preview {
+  margin: 10px 0; }
+
+.ledatw-input-group label {
+  display: block;
+  font-weight: 700; }
+.ledatw-input-group input, .ledatw-input-group textarea {
+  display: block;
+  width: 100%; }
+.ledatw-input-group textarea {
+  height: 120px;
+  resize: vertical; }
