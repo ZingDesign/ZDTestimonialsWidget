@@ -38,8 +38,8 @@ class Testimonial_Widget extends WP_Widget {
     private $is_widget;
 
     public function __construct() {
-        $this -> widget_id = 'ledatw';
-        $this -> client_name = 'Leda';
+        $this -> widget_id = 'zdtw';
+        $this -> client_name = '';
         $this -> version = '0.1.0';
         $this -> is_widget = true;
 
@@ -51,7 +51,7 @@ class Testimonial_Widget extends WP_Widget {
         parent::__construct(
             $this->widget_id . '_testimonial_widget', // Base ID
             $this->client_name . ' Testimonial', // Name
-            array( 'description' => __( $this->client_name . ' Testimonial Widget', 'ledatw' ), ), //Widget Ops
+            array( 'description' => __( 'Zing Design\'s testimonial widget', $this -> widget_id ), ), //Widget Ops
             array( 'width' => 400 ) //Control Ops
         );
 
@@ -124,9 +124,6 @@ class Testimonial_Widget extends WP_Widget {
 
         $wid = $this->widget_id;
         // outputs the content of the widget
-//        $defaults = array();
-
-//        $args = wp_parse_args( $args, $defaults );
 
         extract( $instance );
 
@@ -245,7 +242,7 @@ class Testimonial_Widget extends WP_Widget {
             $src = $image_src[0];
             $short_src = str_replace( $this->uploads_dir_url, '', $src );
 
-            $bg = ( strlen($src) > 0 ) ? ' style="background: url(' . $src . ') no-repeat; width: ' . $image_src[1] . 'px; height: ' . $image_src[2] . 'px;"' : "";
+            $bg = ( strlen($src) > 0 ) ? ' style="background: url(' . $src . ') no-repeat; width: auto; height: 100px; background-size:contain;"' : "";
 
             $input .= "<div class=\"image-group\">\n";
 
