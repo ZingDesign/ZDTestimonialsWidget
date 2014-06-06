@@ -2,19 +2,48 @@
   margin: 10px 0;
 }
 
-.zdtw-input-group {
+.zd-input-group {
   label {
-    display: block;
+    display: inline-block;
+    min-width: 200px;
     font-weight: 700;
   }
-
-  input, textarea {
-    display:block;
-    width: 100%;
-  }
-
   textarea {
     height: 120px;
     resize: vertical;
   }
+
+  &.checkbox-group {
+    label {
+    }
+
+    input[type="checkbox"] {
+      display: inline-block;
+      width: auto;
+    }
+  }
+
+
+  .zd-settings-form & {
+    margin-bottom: 10px;
+  }
+
+  .widget & {
+    label {
+      display: block;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="number"],
+    input[type="tel"],
+    textarea {
+      display:block;
+      width: 100%;
+    }
+  }
+
+
+
+
 }
