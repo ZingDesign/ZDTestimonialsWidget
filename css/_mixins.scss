@@ -1,0 +1,108 @@
+@mixin opacity($opacity) {
+  filter: unquote("progid:DXImageTransform.Microsoft.Alpha(Opacity=#{round($opacity * 100)})");
+  opacity: $opacity;
+}
+
+// Transitions
+
+@mixin transition( $transition-1 ) {
+  -webkit-transition: $transition-1;
+  -moz-transition: $transition-1;
+  transition: $transition-1;
+}
+
+// Translate 3D
+
+//@mixin translate3d($x,$y,$z) {
+//  -ms-transform:translate($x,$y);
+//  -webkit-transform:translate3d($x,$y,$z);
+//  -moz-transform:translate3d($x,$y,$z);
+//  // -ms-transform:translate3d($x,$y,$z);
+//  -o-transform:translate3d($x,$y,$z);
+//  transform:translate3d($x,$y,$z);
+//}
+
+// Animation
+
+//@mixin keyframe ($animation_name) {
+//  @-webkit-keyframes #{$animation_name} {
+//    @content;
+//  }
+//
+//  @-moz-keyframes #{$animation_name} {
+//    @content;
+//  }
+//
+//  @-o-keyframes #{$animation_name} {
+//    @content;
+//  }
+//
+//  @keyframes #{$animation_name} {
+//    @content;
+//  }
+//}
+
+/*
+    Example usage:
+    @include animation(10s, 5s, changecolour)
+ */
+//@mixin animation ($delay, $duration, $animation, $easing:false) {
+//  -webkit-animation-delay: $delay;
+//  -webkit-animation-duration: $duration;
+//  -webkit-animation-name: $animation;
+//  -webkit-animation-fill-mode: forwards; /* this prevents the animation from restarting! */
+//
+//  -moz-animation-delay: $delay;
+//  -moz-animation-duration: $duration;
+//  -moz-animation-name: $animation;
+//  -moz-animation-fill-mode: forwards; /* this prevents the animation from restarting! */
+//
+//  animation-delay: $delay;
+//  animation-duration: $duration;
+//  animation-name: $animation;
+//  animation-fill-mode: forwards; /* this prevents the animation from restarting! */
+//
+//  @if $easing {
+//    -webkit-animation-timing-function: $easing;
+//    -moz-animation-timing-function: $easing;
+//    animation-timing-function: $easing;
+//  }
+//}
+
+@mixin ir() {
+  background-color: transparent;
+  border: 0;
+  overflow: hidden;
+  *text-indent: -9999px;
+
+  &:before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 150%;
+  }
+}
+
+@mixin nub($direction, $color:#fff, $size:5px) {
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  border: solid $size;
+
+  @if $direction == right {
+    border-color: rgba(#000, 0) rgba(#000, 0) rgba(#000, 0) $color;
+  }
+  @else if $direction == left {
+    border-color: rgba(#000, 0) $color rgba(#000, 0) rgba(#000, 0);
+  }
+  @else if $direction == up {
+    border-color: rgba(#000, 0) rgba(#000, 0) $color rgba(#000, 0);
+  }
+  @else if $direction == down {
+    border-color: $color rgba(#000, 0) rgba(#000, 0) rgba(#000, 0);
+  }
+
+  //          top: auto;
+
+}
