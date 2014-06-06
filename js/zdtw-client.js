@@ -80,6 +80,7 @@ jQuery(document).ready(function($){
 //        }, 500);
 
 //    console.log('nav clicked');
+            return false;
         });
     }
 
