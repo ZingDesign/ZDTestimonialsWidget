@@ -1,11 +1,98 @@
+@import "mixins";
+
 $prefix: 'zdtw';
 
-.#{$prefix}-parent-element {
+.ir {
+  @include ir();
+}
+
+.border-box {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.#{$prefix}-container {
   position: relative;
 }
 
 .#{$prefix}-testimonial {
+  @extend .border-box;
+
   &.show-multiple {
-    position:absolute;
+
+    padding: 0 25px;
+//    position:absolute;
+    @include opacity(0);
+
+    @include transition(opacity 300ms);
+
+//    @include transition(left 300ms);
+
+//    @include translate3d(100%,0,0);
+//
+
+//    &:first-child,
+//    @include translate3d(0,100%,0);
+//
+//    &.animate-in {
+//      @include translate3d(0,0,0);
+//    }
+//
+//    &.animate-out {
+//      @include translate3d(-100%,0,0);
+//    }
+
+    &.active {
+      @include opacity(1);
+//      left: 0;
+//      @include translate3d(0,0,0);
+    }
+
+
+  }
+}
+
+.#{$prefix}-nav {
+//  @extend .ir;
+
+  position: absolute;
+  display: block;
+
+  width: 20px;
+  height: 20px;
+  background-color: rgba(#000, 0.2);
+
+  top: 45%;
+  border-radius: 10px;
+
+  span {
+    position: absolute;
+    top: 5px;
+  }
+
+  &.#{$prefix}-prev {
+    left: 0;
+    span {
+      left: 2px;
+
+      @include nub(left, #333);
+    }
+
+  }
+
+  &.#{$prefix}-next {
+    right: 0;
+
+    span {
+      left: 8px;
+
+      @include nub(right, #333);
+    }
+
+  }
+
+  &:hover {
+    background-color: rgba(#000, 0.3);
   }
 }
