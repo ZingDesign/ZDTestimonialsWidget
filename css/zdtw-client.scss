@@ -1,0 +1,11 @@
+$prefix: 'zdtw';
+
+.#{$prefix}-parent-element {
+  position: relative;
+}
+
+.#{$prefix}-testimonial {
+  &.show-multiple {
+    position:absolute;
+  }
+}
