@@ -159,21 +159,42 @@ class Testimonial_Widget extends WP_Widget {
 
         $html = '';
 
-        $html .= "<div class=\"{$wid}-testimonial\">\n";
+        $show_multiple = get_option( '_' . $wid . '_show_multiple_testimonials_in_side_bar') ? ' show-multiple' : '';
+
+        $html .= "<div class=\"{$wid}-testimonial{$show_multiple}\">\n";
         //        $html .= "<h1>Testimonial</h1>\n";
-        $html .= "<div class=\"{$wid}-avatar-image\">\n";
-        $html .= "<img src=\"{$image_src}\" alt=\"{$full_name}'s avatar.\" width=\"{$image_width}\" height=\"{$image_height}\" />\n";
-        $html .= "</div><!--avatar-image-->\n";
+
+        if( $image_data ) {
+            $html .= "<div class=\"{$wid}-avatar-image\">\n";
+            $html .= "<img src=\"{$image_src}\" alt=\"{$full_name}'s avatar.\" width=\"{$image_width}\" height=\"{$image_height}\" />\n";
+            $html .= "</div><!--avatar-image-->\n";
+        }
+
 
         $html .= "<div class=\"testimonial\">\n";
         $html .= wpautop( $testimonial );
-        $html .= "</div>\n";
-
-        $html .= "</div><!--testimonial-->\n";
+        $html .= "</div><!--.testimonial-->\n";
 
         $html .= "<div class=\"testimonial-meta\">\n";
-        $html .= "<span>{$full_name} | {$job_title}, {$business_name}</span><span class=\"location\">{$location}</span>\n";
+
+        $html .= "<span>";
+        if( $full_name ) {
+            $html .= $full_name;
+        }
+        if( $job_title ) {
+            $html .= " | {$job_title}";
+        }
+        if( $business_name ) {
+            $html .= ", {$business_name}";
+        }
+        $html .= "</span>";
+
+        if($location) {
+            $html .= "<span class=\"location\">{$location}</span>\n";
+        }
+
         $html .= "</div><!--testimonial-meta-->\n";
+        $html .= "</div><!--{$wid}-testimonial-->\n";
 
         echo $html;
 
@@ -189,7 +210,11 @@ class Testimonial_Widget extends WP_Widget {
     }
 
     function load_client_assets() {
+        $wid = $this->widget_id;
 
+        wp_enqueue_style( $wid . '-client-stylesheet', plugins_url( '/css/'.$wid.'-client.css', dirname(__FILE__)) );
+
+        wp_enqueue_script( $wid . '-client-script', plugins_url( 'js/'.$wid.'-client.js', dirname(__FILE__)), array(), $this->version, true);
     }
 
     function form_field( $args ) {
