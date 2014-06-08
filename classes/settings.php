@@ -51,7 +51,15 @@ class ZDTestimonialsSettings {
             ),
             'show_multiple_testimonials_in_side_bar' => array(
                 'type' => 'checkbox'
+            ),
+            'testimonial_class_name' => array(
+//                'id' => 'testimonial-class-name',
+                'type' => 'text'
+            ),
+            'show_horizontal_rule' => array(
+                'type' => 'checkbox'
             )
+
 
         );
 

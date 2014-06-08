@@ -170,14 +170,18 @@ class Testimonial_Widget extends WP_Widget {
             $html .= "</div><!--avatar-image-->\n";
         }
 
+        $custom_testimonial_class = ZDTW_Utilities::zdtw_get_option('testimonial_class_name');
+        $show_hr = ZDTW_Utilities::zdtw_get_option('show_horizontal_rule') ? '<hr/>' : '';
 
-        $html .= "<div class=\"testimonial\">\n";
+        $html .= "<div class=\"testimonial {$custom_testimonial_class}\">\n";
         $html .= wpautop( $testimonial );
         $html .= "</div><!--.testimonial-->\n";
 
+        $html .= $show_hr;
+
         $html .= "<div class=\"testimonial-meta\">\n";
 
-        $html .= "<span>";
+        $html .= "<p>";
         if( $full_name ) {
             $html .= $full_name;
         }
@@ -187,7 +191,7 @@ class Testimonial_Widget extends WP_Widget {
         if( $business_name ) {
             $html .= ", {$business_name}";
         }
-        $html .= "</span>";
+        $html .= "</p>";
 
         if($location) {
             $html .= "<span class=\"location\">{$location}</span>\n";

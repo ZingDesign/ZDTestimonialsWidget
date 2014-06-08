@@ -71,8 +71,8 @@ jQuery(document).ready(function($){
             var activeSlide = sidebar.find('.active')
                 ,nextSlide = $(allSlides[clicks]);
 
-            activeSlide.addClass('animate-out').removeClass('active');
-            nextSlide.addClass('animate-in active');
+            activeSlide.removeClass('active');
+            nextSlide.addClass('active');
 
 //        _w.setTimeout(function() {
 //            activeSlide.removeClass('animate-out');

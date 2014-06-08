@@ -11,6 +11,7 @@ Author URI: http://www.zingdesign.com
 
 define( 'ZDTW_TEXT_DOMAIN', 'zdtw' );
 
+require_once( plugin_dir_path( __FILE__ ) . 'classes/utilities.php');
 require_once( plugin_dir_path( __FILE__ ) . 'classes/widget.php');
 require_once( plugin_dir_path( __FILE__ ) . 'classes/settings.php');
 
