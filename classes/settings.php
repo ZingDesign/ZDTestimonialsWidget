@@ -22,6 +22,9 @@ class ZDTestimonialsSettings {
             add_action( 'admin_menu', array( $this, $prefix . '_init_menu' ));
             add_action( 'admin_init', array( $this, $prefix . '_theme_settings') );
         }
+        else {
+            add_action( 'wp_head', array( $this, $prefix . '_head_output') );
+        }
 
         $options = array(
             'client_name' => array(
@@ -58,6 +61,12 @@ class ZDTestimonialsSettings {
             ),
             'show_horizontal_rule' => array(
                 'type' => 'checkbox'
+            ),
+            'button_background_colour' => array(
+                'type' => 'text'
+            ),
+            'button_foreground_colour' => array(
+                'type' => 'text'
             )
 
 
@@ -238,6 +247,30 @@ class ZDTestimonialsSettings {
         }
 
         echo "</div><!--.input-group-->\n";
+    }
+
+    function zdtw_head_output() {
+        $btn_background = get_option('_' . ZDTW_TEXT_DOMAIN . '_button_background_colour');
+        $btn_foreground = get_option('_' . ZDTW_TEXT_DOMAIN . '_button_foreground_colour');
+
+        $html = '';
+
+        if( $btn_background || $btn_foreground ) {
+            $html .= '<style type="text/css" media="screen">'."\n";
+
+            if( $btn_background ) {
+                $html .= '.' . ZDTW_TEXT_DOMAIN . '-nav { background-color: '.$btn_background.' !important;}'."\n";
+            }
+
+            if( $btn_foreground ) {
+                $html .= '.' . ZDTW_TEXT_DOMAIN . '-next span { border-left-color: '.$btn_foreground.' !important;}'."\n";
+                $html .= '.' . ZDTW_TEXT_DOMAIN . '-prev span { border-right-color: '.$btn_foreground.' !important;}'."\n";
+            }
+
+            $html .= '</style>'."\n";
+        }
+
+        echo $html;
     }
 
 }

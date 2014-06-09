@@ -10,7 +10,8 @@
   resize: vertical; }
 .zd-input-group.checkbox-group input[type="checkbox"] {
   display: inline-block;
-  width: auto; }
+  width: auto;
+  margin-left: 5px; }
 .zd-settings-form .zd-input-group {
   margin-bottom: 10px; }
 .widget .zd-input-group label {
