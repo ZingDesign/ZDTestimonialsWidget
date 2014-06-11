@@ -135,6 +135,8 @@ class Testimonial_Widget extends WP_Widget {
 
         //        $instance['avatar'] = $new_instance['avatar'];
 
+        $instance['title'] = $new_instance['first_name'] . ' ' . $new_instance['last_name'];
+
         foreach( $new_instance as $key => $val ) {
             $instance[$key] = strip_tags( $val );
         }
