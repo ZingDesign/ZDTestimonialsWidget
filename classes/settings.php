@@ -53,6 +53,10 @@ class ZDTestimonialsSettings {
                 'type' => 'checkbox'
             ),
             'show_multiple_testimonials_in_side_bar' => array(
+                'label' => 'Show multiple testimonials in slider',
+                'type' => 'checkbox'
+            ),
+            'show_avatar_inside_testimonial_box' => array(
                 'type' => 'checkbox'
             ),
             'testimonial_class_name' => array(
@@ -60,6 +64,7 @@ class ZDTestimonialsSettings {
                 'type' => 'text'
             ),
             'show_horizontal_rule' => array(
+                'label' => 'Show a horizontal between the testimonial and the meta',
                 'type' => 'checkbox'
             ),
             'button_background_colour' => array(
@@ -134,7 +139,7 @@ class ZDTestimonialsSettings {
 
             $setting_name = '_' . $prefix . '_' . $key;
 
-            $title = str_replace("_", " ", ucfirst( $key ) );
+            $title = isset($option['label']) ? $option['label'] : str_replace("_", " ", ucfirst( $key ) );
             $option_type = $option['type'];
 
             $filter = isset($option['filter']) ? $option['filter'] : 'esc_html';
