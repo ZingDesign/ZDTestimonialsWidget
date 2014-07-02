@@ -152,6 +152,7 @@ class Testimonial_Widget extends WP_Widget {
         // outputs the content of the widget
 
         extract( $instance );
+        extract( $args );
 
         $full_name = $first_name . ' ' . $last_name;
         $image_data = wp_get_attachment_image_src( $avatar );
@@ -159,23 +160,40 @@ class Testimonial_Widget extends WP_Widget {
         $image_width = $image_data[1];
         $image_height = $image_data[2];
 
-        $html = '';
+        $avatar_html = $html = $before = $after = '';
 
+        $show_avatar_in_testimonial = get_option('_' . $wid . '_show_avatar_inside_testimonial_box');
         $show_multiple = get_option( '_' . $wid . '_show_multiple_testimonials_in_side_bar') ? ' show-multiple' : '';
+
+        if( !$show_multiple )  {
+            $before = $before_widget;
+            $after = $after_widget;
+        }
+
+        if( $image_data ) {
+            $avatar_html .= "<div class=\"{$wid}-avatar-image\">\n";
+            $avatar_html .= "<img src=\"{$image_src}\" alt=\"{$full_name}'s avatar.\" width=\"{$image_width}\" height=\"{$image_height}\" />\n";
+            $avatar_html .= "</div><!--avatar-image-->\n";
+        }
+
+        $html .= $before;
 
         $html .= "<div class=\"{$wid}-testimonial{$show_multiple}\">\n";
         //        $html .= "<h1>Testimonial</h1>\n";
 
-        if( $image_data ) {
-            $html .= "<div class=\"{$wid}-avatar-image\">\n";
-            $html .= "<img src=\"{$image_src}\" alt=\"{$full_name}'s avatar.\" width=\"{$image_width}\" height=\"{$image_height}\" />\n";
-            $html .= "</div><!--avatar-image-->\n";
+        if( !$show_avatar_in_testimonial ) {
+            $html .= $avatar_html;
         }
 
         $custom_testimonial_class = ZDTW_Utilities::zdtw_get_option('testimonial_class_name');
         $show_hr = ZDTW_Utilities::zdtw_get_option('show_horizontal_rule') ? '<hr/>' : '';
 
         $html .= "<div class=\"testimonial {$custom_testimonial_class}\">\n";
+
+        if( $show_avatar_in_testimonial ) {
+            $html .= $avatar_html;
+        }
+
         $html .= wpautop( $testimonial );
         $html .= "</div><!--.testimonial-->\n";
 
@@ -201,6 +219,8 @@ class Testimonial_Widget extends WP_Widget {
 
         $html .= "</div><!--testimonial-meta-->\n";
         $html .= "</div><!--{$wid}-testimonial-->\n";
+
+        $html .= $after;
 
         echo $html;
 
