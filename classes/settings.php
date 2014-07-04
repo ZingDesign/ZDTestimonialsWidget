@@ -64,7 +64,7 @@ class ZDTestimonialsSettings {
                 'type' => 'text'
             ),
             'show_horizontal_rule' => array(
-                'label' => 'Show a horizontal between the testimonial and the meta',
+                'label' => 'Show a horizontal rule between the testimonial and the meta',
                 'type' => 'checkbox'
             ),
             'button_background_colour' => array(

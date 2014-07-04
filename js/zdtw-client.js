@@ -9,19 +9,19 @@ jQuery(document).ready(function($){
         ,clicks = 0
         ,testimonialWidgets = $('.' + prefix + '-testimonial')
         ,tallestWidget = getTallest( testimonialWidgets )
-        ,firstTestimonial = testimonialWidgets.first();
+        ,firstTestimonial = testimonialWidgets.first()
+        ,numTestimonials = testimonialWidgets.length;
 //        ,sidebar = firstTestimonial.parent();
 
 
 
-    if( firstTestimonial.hasClass('show-multiple') ) {
+    if( firstTestimonial.hasClass('show-multiple') && numTestimonials > 1 ) {
 
         firstTestimonial.addClass('active');
 
         testimonialWidgets.wrapAll('<div class="' + prefix + '-container" />');
 
         var sidebar = $('.' +prefix + '-container');
-
 
         sidebar.css({
             'width': sidebar.parent().width(),
