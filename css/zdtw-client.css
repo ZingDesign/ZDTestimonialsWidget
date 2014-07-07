@@ -31,6 +31,11 @@
   .zdtw-testimonial.show-multiple.active {
     filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
     opacity: 1; }
+  .no-js .zdtw-testimonial.show-multiple {
+    border-bottom: 1px solid #999;
+    margin-bottom: 20px;
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+    opacity: 1; }
 
 .zdtw-nav {
   position: absolute;
