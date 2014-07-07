@@ -49,6 +49,12 @@ $prefix: 'zdtw';
 //      @include translate3d(0,0,0);
     }
 
+    .no-js & {
+      border-bottom: 1px solid #999;
+      margin-bottom: 20px;
+      @include opacity(1);
+    }
+
 
   }
 }
