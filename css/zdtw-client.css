@@ -22,7 +22,7 @@
   position: relative; }
 
 .zdtw-testimonial.show-multiple {
-  padding: 0 30px;
+  padding: 0 35px;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
   opacity: 0;
   -webkit-transition: opacity 300ms;
